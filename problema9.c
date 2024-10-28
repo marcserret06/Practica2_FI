@@ -99,28 +99,39 @@ max = sfila[i];
 return max;
 }
 
-float Onenorm(float M[N][N])
-float suma1=0;
-float sfila[N];
+float Onenorm(float M[N][N]) {
+float suma2=0;
+float scolumna[N];
 for (int i=0;i<N;i++) {
 for (int n=0;n<N;n++) {
-suma1 = suma1 + fabs(M[n][i]);
+suma2 = suma2 + fabs(M[n][i]);
 }
-sfila[i] = suma1;
-suma1=0;
+scolumna[i] = suma2;
+suma2=0;
 }
 float max=0;
 for (int i=0;i<N;i++) {
-if (sfila[i] > max) {
-max = sfila[i];
+if (scolumna[i] > max) {
+max = scolumna[i];
 }
 }
 return max;
+}
+float NormFrobenius( float M[N][N] ) {
+float sumatot = 0;
+float resul;
+for (int i = 0; i < N; i++) {
+for (int n = 0; n < N; n++) {
+sumatot = sumatot + M[i][n]*M[i][n];
+}
+}
+resul = sqrt(sumatot);
+return resul;
 }
 
 int main() {
 float max;
 InitData();
-max = Onenorm(Mat);
+max = NormFrobenius(Mat);
 printf("%f", max);
 }
