@@ -41,6 +41,7 @@ for (int i = 0; i < N; i++) {
 vectres[i] = vect[i] * alfa;
 }
 }
+
 float Scalar( float vect1[N], float vect2[N] ) {
 float resul, nvec;
 for (int i = 0; i < N; i++) {
@@ -49,11 +50,19 @@ resul = resul + nvec;
 }
 return resul;
 }
+
+float Magnitude( float vect[N] ) {
+float suma, res;
+suma=0;
+for(int i=0;i<N;i++) {
+suma = suma + vect[i]*vect[i];
+}
+res=sqrt(suma);
+return res;
 }
 
 int main() {
-float VRES[N];
 InitData();
-float res = Scalar(V1, V2);
-printf("%f", res);
+float res = Magnitude(V1);
+printf("%f\n", res);
 }

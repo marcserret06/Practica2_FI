@@ -41,6 +41,7 @@ for (int i = 0; i < N; i++) {
 vectres[i] = vect[i] * alfa;
 }
 }
+
 float Scalar( float vect1[N], float vect2[N] ) {
 float resul, nvec;
 for (int i = 0; i < N; i++) {
@@ -49,6 +50,16 @@ resul = resul + nvec;
 }
 return resul;
 }
+}
+
+float Magnitude( float vect[N] ) {
+int suma, res;
+suma=0;
+for(i=0;i<50;i++) {
+suma = suma + vect[N]*vect[N];
+}
+res=sqrt(suma);
+return res;
 }
 
 int main() {
