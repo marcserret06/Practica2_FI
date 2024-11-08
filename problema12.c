@@ -41,7 +41,6 @@ for (int i = 0; i < N; i++) {
 vectres[i] = vect[i] * alfa;
 }
 }
-
 float Scalar( float vect1[N], float vect2[N] ) {
 float resul=0;
 float nvec;
@@ -99,9 +98,81 @@ max = sfila[i];
 return max;
 }
 
+float Onenorm(float M[N][N]) {
+float suma2=0;
+float scolumna[N];
+for (int i=0;i<N;i++) {
+for (int n=0;n<N;n++) {
+suma2 = suma2 + fabs(M[n][i]);
+}
+scolumna[i] = suma2;
+suma2=0;
+}
+float max=0;
+for (int i=0;i<N;i++) {
+if (scolumna[i] > max) {
+max = scolumna[i];
+}
+}
+return max;
+}
+float NormFrobenius( float M[N][N] ) {
+float sumatot = 0;
+float resul;
+for (int i = 0; i < N; i++) {
+for (int n = 0; n < N; n++) {
+sumatot = sumatot + M[i][n]*M[i][n];
+}
+}
+resul = sqrt(sumatot);
+return resul;
+}
+
+int DiagonalDom( float M[N][N] ) {
+float dom;
+int res;
+int dd = 1;
+float sum = 0;
+for (int i=0;i<N;i++) {
+for (int j=0;j<N;j++) {
+if (i == j) {
+dom = abs(M[i][j]);
+}
+else {
+sum = sum + abs(M[i][j]);
+}
+}
+if (dom < sum) {
+dd = 0;
+break;
+}
+sum = 0;
+}
+if (dd == 0) {
+res = 0;
+}
+else {
+res = 1;
+}
+return res;
+}
+
+void Matriu_x_Vector( float M[N][N], float vect[N], float vectres[N] ) {
+for (int i=0; i<N; i++) {
+int sum = 0;
+int prod = 0;
+for (int j=0; j<N; j++) {
+prod = M[i][j] * vect[j];
+sum = sum + prod;
+vectres[i] = sum;
+}
+}
+}
+
+
 int main() {
-float max;
 InitData();
-max = Infininorm(Mat);
-printf("%f", max);
+float vectr[N];
+Matriu_x_Vector(Mat, V2, vectr);
+PrintVect(vectr, 0, 9);
 }

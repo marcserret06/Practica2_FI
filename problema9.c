@@ -117,21 +117,10 @@ max = scolumna[i];
 }
 return max;
 }
-float NormFrobenius( float M[N][N] ) {
-float sumatot = 0;
-float resul;
-for (int i = 0; i < N; i++) {
-for (int n = 0; n < N; n++) {
-sumatot = sumatot + M[i][n]*M[i][n];
-}
-}
-resul = sqrt(sumatot);
-return resul;
-}
 
 int main() {
 float max;
 InitData();
-max = NormFrobenius(Mat);
+max = Onenorm(Mat);
 printf("%f", max);
 }

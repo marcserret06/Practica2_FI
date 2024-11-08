@@ -75,9 +75,6 @@ res = 0;
 return res;
 }
 
-void  Projection( float vect1[N], float vect2[N], float vectres[N] ) {
-
-
 
 int main() {
 InitData();

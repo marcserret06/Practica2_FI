@@ -41,7 +41,6 @@ for (int i = 0; i < N; i++) {
 vectres[i] = vect[i] * alfa;
 }
 }
-
 float Scalar( float vect1[N], float vect2[N] ) {
 float resul=0;
 float nvec;
@@ -131,43 +130,38 @@ return resul;
 
 int DiagonalDom( float M[N][N] ) {
 float dom;
-float sum = 0;
 int res;
 int dd = 1;
+float sum = 0;
 for (int i=0;i<N;i++) {
 for (int j=0;j<N;j++) {
-
 if (i == j) {
-dom = M[i][j];
+dom = abs(M[i][j]);
 }
-
 else {
-sum = sum + M[i][j];
+sum = sum + abs(M[i][j]);
 }
 }
-
 if (dom < sum) {
 dd = 0;
+break;
+}
 sum = 0;
 }
-
-}
-
 if (dd == 0) {
 res = 0;
 }
-
 else {
 res = 1;
 }
-
 return res;
 }
 
+
 int main() {
-float max;
 InitData();
-int dd = DiagonalDom(Mat);
-int ddd = DiagonalDom(MatDD);
-printf("%d, %d \n", dd, ddd);
+int n = DiagonalDom(MatDD);
+int m = DiagonalDom(Mat);
+printf("%i, %i", n, m);
 }
+
